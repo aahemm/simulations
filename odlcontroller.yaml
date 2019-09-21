@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: controller
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: controller
+    spec:
+      containers:
+      - name: controller
+        command: ["/opt/opendaylight/bin/karaf"]
+        image: opendaylight/odl
+        ports:
+        - containerPort: 6633
